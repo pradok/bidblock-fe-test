@@ -28,6 +28,7 @@
     "@types/react-router-dom": "^4.2.7",
     "@types/react-router-redux": "^5.0.15",
     "react-app-rewired": "^1.5.2",
+    "redux-saga-test-plan": "^3.7.0",
     "ts-import-plugin": "^1.5.4",
     "typescript": "^2.9.2"
   }

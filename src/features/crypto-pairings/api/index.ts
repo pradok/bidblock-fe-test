@@ -1,0 +1,1 @@
+export {fetchCryptoPairings} from './fetch-crypto-pairings';
