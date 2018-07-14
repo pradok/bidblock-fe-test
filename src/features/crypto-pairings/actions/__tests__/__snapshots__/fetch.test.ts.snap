@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`features -> product -> actions fetchProducts 1`] = `
+Object {
+  "symbol": "ALL",
+  "type": "CRYPTO/PAIRINGS_FETCH",
+}
+`;
+
+exports[`features -> product -> actions fetchProducts 2`] = `
+Object {
+  "payload": Array [
+    Array [
+      "tBTCUSD",
+      6239.9,
+      34.92908368,
+      6240,
+      35.7623858,
+      -30.1,
+      -0.0048,
+      6239.9,
+      18771.42426519,
+      6339.9,
+      6125,
+    ],
+    Array [
+      "tLTCUSD",
+      75.999,
+      1099.6280602,
+      76,
+      486.87405918,
+      -1.648,
+      -0.0212,
+      76,
+      110391.68659301,
+      78.66,
+      75.049,
+    ],
+  ],
+  "type": "CRYPTO/PAIRINGS_FETCH_SUCCESS",
+}
+`;
+
+exports[`features -> product -> actions fetchProducts 3`] = `
+Object {
+  "payload": Object {
+    "message": "Error fetching collection",
+    "name": "Error Name",
+  },
+  "type": "CRYPTO/PAIRINGS_FETCH_ERROR",
+}
+`;

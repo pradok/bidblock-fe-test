@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button } from 'antd';
 
 import './home.css';
 import logo from '../logo.svg';
@@ -13,7 +12,6 @@ const Home = () => (
       </header>
       <p className="App-intro">
         To get started, edit <code>src/App.tsx</code> and save to reload.
-        <Button type="primary">Button</Button>
       </p>
     </div>
   </React.Fragment>
