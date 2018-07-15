@@ -5,13 +5,16 @@ import styled from 'styled-components';
 // @ts-ignore
 import * as Icon from 'react-cryptocoins';
 
-import {TickerCollection} from '../models';
+import {TickerCollection, Ticker} from '../models';
 import {splitCryptoPairingSymbol} from "../../../utils/transformer";
+import * as models from "../models";
 
 interface Props {
   pairings: TickerCollection;
+  rowClickHandler: (ticker: models.Ticker, index: number) => void;
 }
 
+let onRowClickHandler: any = null;
 
 const StyledIconWrapper = styled.span`
   margin-right: 10px;
@@ -33,7 +36,7 @@ const columns = [{
     const CryptoIcon = Icon[cryptos[0]];
     return (
       <React.Fragment>
-        <StyledIconWrapper>{CryptoIcon && <CryptoIcon size={30} />}</StyledIconWrapper>
+        <StyledIconWrapper>{CryptoIcon && <CryptoIcon size={30}/>}</StyledIconWrapper>
         <StyledWrapper>{toUpper(`${cryptos[0]}/${cryptos[1]}`)}</StyledWrapper>
       </React.Fragment>
     )
@@ -48,9 +51,23 @@ const columns = [{
   title: '24h Change',
 }];
 
-const CryptoPairingList = ({pairings}: Props) => {
+const onRowHandler = (record: Ticker, index: number) => {
+  return {
+    onClick: () => {
+      onRowClickHandler(record, index);
+    }
+  }
+};
+
+const CryptoPairingList = ({pairings, rowClickHandler}: Props) => {
+  onRowClickHandler = rowClickHandler;
   return (
-    <Table columns={columns} dataSource={pairings} rowKey="symbol"/>
+    <Table
+      columns={columns}
+      dataSource={pairings}
+      rowKey="symbol"
+      onRow={onRowHandler}
+    />
   )
 };
 

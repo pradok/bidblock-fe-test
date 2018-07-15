@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import { Dispatch } from 'redux';
+import {Spin} from 'antd';
+import {RouteComponentProps} from "react-router-dom";
 
 import * as models from '../models';
 import {RootState} from '../../../store';
@@ -15,11 +17,15 @@ interface StateProps {
   tickerCollection: models.TickerCollection;
 }
 
+interface OwnProps {
+  history: RouteComponentProps<{}>;
+}
+
 interface DispatchProps {
   fetchPairingsCollection: () => void;
 }
 
-type Props = StateProps & DispatchProps;
+type Props = StateProps & DispatchProps & OwnProps;
 
 class CryptoPairingsContainer extends React.Component<Props, {}> {
 
@@ -27,18 +33,24 @@ class CryptoPairingsContainer extends React.Component<Props, {}> {
     this.props.fetchPairingsCollection();
   }
 
+  public onRowClickHandler = (ticker: models.Ticker, index: number) => {
+    const {history: {history}} = this.props;
+    history.push(`/ticker/${ticker.symbol}/${index}`);
+  };
+
   public render() {
     return (
-      <div>
-        <CryptoPairingList pairings={this.props.tickerCollection}/>
-      </div>
+      <Spin spinning={this.props.isLoading} size="large">
+        <CryptoPairingList pairings={this.props.tickerCollection} rowClickHandler={this.onRowClickHandler} />
+      </Spin>
     );
   }
 }
 
-const mapStateToProps = (state: RootState) => {
+const mapStateToProps = (state: RootState, props: OwnProps) => {
   return {
     collection: state.cryptoPairings.collection,
+    history: props.history,
     isFetched: state.cryptoPairings.isFetched,
     isLoading: state.cryptoPairings.isLoading,
     tickerCollection: state.cryptoPairings.tickerCollection
