@@ -1,12 +1,15 @@
 import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 
+import * as CryptoPairings from '../features/crypto-pairings';
+
 export interface RootState {
-  some: string;
+  cryptoPairings: CryptoPairings.models.CryptoPairingsCollectionState;
 }
 
 const rootReducer = combineReducers({
-  router: routerReducer,
+  cryptoPairings: CryptoPairings.reducers.cryptoPairings,
+  router: routerReducer
 });
 
 export default rootReducer;

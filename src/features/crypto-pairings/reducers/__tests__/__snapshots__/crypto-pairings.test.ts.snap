@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cryptoPairings reducers Action CRYPTO/PAIRINGS_FETCH should return state 1`] = `
+Object {
+  "collection": Array [],
+  "isFetched": false,
+  "isLoading": true,
+  "tickerCollection": Array [],
+}
+`;
+
+exports[`cryptoPairings reducers Action CRYPTO/PAIRINGS_FETCH_ERROR should return state 1`] = `
+Object {
+  "collection": Array [],
+  "isFetched": false,
+  "isLoading": false,
+  "tickerCollection": Array [],
+}
+`;
+
+exports[`cryptoPairings reducers Action CRYPTO/PAIRINGS_FETCH_SUCCESS should return state 1`] = `
+Object {
+  "collection": Array [
+    Array [
+      "tBTCUSD",
+      6239.9,
+      34.92908368,
+      6240,
+      35.7623858,
+      -30.1,
+      -0.0048,
+      6239.9,
+      18771.42426519,
+      6339.9,
+      6125,
+    ],
+    Array [
+      "tLTCUSD",
+      75.999,
+      1099.6280602,
+      76,
+      486.87405918,
+      -1.648,
+      -0.0212,
+      76,
+      110391.68659301,
+      78.66,
+      75.049,
+    ],
+  ],
+  "isFetched": true,
+  "isLoading": false,
+  "tickerCollection": Array [
+    Object {
+      "ask": 6240,
+      "askSize": 35.7623858,
+      "bid": 6239.9,
+      "bidSize": 34.92908368,
+      "dailyChange": -30.1,
+      "dailyChangePerc": -0.0048,
+      "high": 6339.9,
+      "lastPrice": 6239.9,
+      "low": 6125,
+      "symbol": "tBTCUSD",
+      "volume": 18771.42426519,
+    },
+    Object {
+      "ask": 76,
+      "askSize": 486.87405918,
+      "bid": 75.999,
+      "bidSize": 1099.6280602,
+      "dailyChange": -1.648,
+      "dailyChangePerc": -0.0212,
+      "high": 78.66,
+      "lastPrice": 76,
+      "low": 75.049,
+      "symbol": "tLTCUSD",
+      "volume": 110391.68659301,
+    },
+  ],
+}
+`;
