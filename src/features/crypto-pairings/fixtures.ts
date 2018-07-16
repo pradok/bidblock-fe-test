@@ -1,4 +1,4 @@
-import {CryptoPairingsCollection} from "./models";
+import {CryptoPairingsCollection, TickerDetails} from "./models";
 
 const pairings: CryptoPairingsCollection = [
   [
@@ -9,4 +9,17 @@ const pairings: CryptoPairingsCollection = [
   ]
 ];
 
-export {pairings};
+const tickerDetails: TickerDetails = {
+  ask: 0.0002709,
+  askSize: 43891.54842947,
+  bid: 0.00021887,
+  bidSize: 1553050.60274823,
+  dailyChange: -0.00000617,
+  dailyChangePerc: -0.0267,
+  high: 0.000232,
+  lastPrice: 0.000225,
+  low: 0.000225,
+  volume: 48787.142,
+};
+
+export {tickerDetails, pairings};

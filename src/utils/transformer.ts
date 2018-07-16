@@ -39,7 +39,13 @@ export const tickerRawToDetail = (tickerRaw: CryptoPairings.models.TickerRaw) =>
 
 export const splitCryptoPairingSymbol = (pairingSymbol: string) => {
   return [
-    upperFirst(lowerCase(pairingSymbol.substr(1).slice(0,3))),
+    upperFirst(lowerCase(pairingSymbol.substr(1).slice(0, 3))),
     upperFirst(lowerCase(pairingSymbol.substr(1).slice(3))),
   ]
+};
+
+export const numToLocale = (num: number) => {
+  const intg = (num + "").split(".")[0];
+  const maximumFractionDigits = intg.length === 1 && intg === '0' ? 6 : 4;
+  return num.toLocaleString(undefined, {maximumFractionDigits});
 };

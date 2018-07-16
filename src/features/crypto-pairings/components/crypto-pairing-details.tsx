@@ -11,7 +11,7 @@ import {RootState} from '../../../store';
 import {TickerDetails} from '../models';
 import {fetchCryptoTicker} from '../api';
 
-import {splitCryptoPairingSymbol} from '../../../utils/transformer';
+import {splitCryptoPairingSymbol, numToLocale} from '../../../utils/transformer';
 
 interface StateProps {
   tickerDetails: TickerDetails;
@@ -74,19 +74,19 @@ class CryptoPairingDetails extends React.Component<Props, State> {
         <Card title="Ticker Details">
           <h2>{CryptoIcon && <CryptoIcon size={48} />} {toUpper(`${cryptos[0]}/${cryptos[1]}`)}</h2>
           <h4>Bid</h4>
-          <p>{tickerDetails.bid}</p>
+          <p>{numToLocale(tickerDetails.bid)}</p>
           <h4>Bid size</h4>
-          <p>{tickerDetails.bidSize}</p>
+          <p>{numToLocale(tickerDetails.bidSize)}</p>
           <h4>Ask</h4>
-          <p>{tickerDetails.ask}</p>
+          <p>{numToLocale(tickerDetails.ask)}</p>
           <h4>Ask size</h4>
-          <p>{tickerDetails.askSize}</p>
+          <p>{numToLocale(tickerDetails.askSize)}</p>
           <h4>Daily change</h4>
-          <p>{tickerDetails.dailyChange}</p>
+          <p>{numToLocale(tickerDetails.dailyChange)}</p>
           <h4>Last price</h4>
-          <p>{tickerDetails.lastPrice}</p>
+          <p>{numToLocale(tickerDetails.lastPrice)}</p>
           <h4>Volume</h4>
-          <p>{tickerDetails.volume}</p>
+          <p>{numToLocale(tickerDetails.volume)}</p>
         </Card>
       </Spin>
     )
@@ -108,6 +108,8 @@ const mapStateToProps = (state: RootState, props: OwnProps) => {
     tickerFetch: !tickerCollection[props.tickerIndex]
   }
 };
+
+export const CryptoTickerDetails = CryptoPairingDetails ;
 
 export default connect<StateProps, {}, {}>(
   mapStateToProps,
