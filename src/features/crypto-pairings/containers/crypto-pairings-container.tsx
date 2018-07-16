@@ -11,7 +11,6 @@ import {fetchCryptoPairings} from '../actions';
 import {CryptoPairingList}from '../components';
 
 interface StateProps {
-  collection: models.CryptoPairingsCollection;
   isLoading: boolean;
   isFetched: boolean;
   tickerCollection: models.TickerCollection;
@@ -33,7 +32,7 @@ class CryptoPairingsContainer extends React.Component<Props, {}> {
     this.props.fetchPairingsCollection();
   }
 
-  public onRowClickHandler = (tickerSelected: models.Ticker, index: number) => {
+  public onRowClickHandler = (tickerSelected: models.Ticker) => {
     const {history: {history}, tickerCollection} = this.props;
     const tickerIndex = tickerCollection.findIndex(ticker => ticker.symbol === tickerSelected.symbol);
     history.push(`/ticker/${tickerSelected.symbol}/${tickerIndex}`);
@@ -50,7 +49,6 @@ class CryptoPairingsContainer extends React.Component<Props, {}> {
 
 const mapStateToProps = (state: RootState, props: OwnProps) => {
   return {
-    collection: state.cryptoPairings.collection,
     history: props.history,
     isFetched: state.cryptoPairings.isFetched,
     isLoading: state.cryptoPairings.isLoading,

@@ -16,7 +16,6 @@ export interface CryptoPairingsFetchAction {
 export type CryptoPairSymbol = string;
 
 export interface CryptoPairingsCollectionState {
-  collection: CryptoPairingsCollection;
   isLoading: boolean;
   isFetched: boolean;
   tickerCollection: TickerCollection,
