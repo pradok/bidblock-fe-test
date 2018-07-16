@@ -6,15 +6,13 @@ import styled from 'styled-components';
 import * as Icon from 'react-cryptocoins';
 
 import {TickerCollection, Ticker} from '../models';
-import {splitCryptoPairingSymbol} from "../../../utils/transformer";
+import {splitCryptoPairingSymbol, numToLocale} from "../../../utils/transformer";
 import * as models from "../models";
 
 interface Props {
   pairings: TickerCollection;
   rowClickHandler: (ticker: models.Ticker, index: number) => void;
 }
-
-let onRowClickHandler: any = null;
 
 const StyledIconWrapper = styled.span`
   margin-right: 10px;
@@ -42,25 +40,36 @@ const columns = [{
     )
   },
   title: 'Symbol',
-}, {
-  dataIndex: 'lastPrice',
-  title: 'Last Price',
-}, {
-  dataIndex: 'dailyChangePerc',
-  render: (value: number) => `${round(round(value * 100, 2), 1)}%`,
-  title: '24h Change',
-}];
-
-const onRowHandler = (record: Ticker, index: number) => {
-  return {
-    onClick: () => {
-      onRowClickHandler(record, index);
-    }
-  }
-};
+},
+  {
+    dataIndex: 'lastPrice',
+    render: (value: number) => `${numToLocale(value)}`,
+    title: 'Last Price',
+  },
+  {
+    dataIndex: 'high',
+    render: (value: number) => `${numToLocale(value)}`,
+    title: '24h High',
+  },
+  {
+    dataIndex: 'low',
+    render: (value: number) => `${numToLocale(value)}`,
+    title: '24h Low',
+  },
+  {
+    dataIndex: 'dailyChangePerc',
+    render: (value: number) => `${round(round(value * 100, 2), 1)}%`,
+    title: '24h Change',
+  }];
 
 const CryptoPairingList = ({pairings, rowClickHandler}: Props) => {
-  onRowClickHandler = rowClickHandler;
+  const onRowHandler = (record: Ticker, index: number) => {
+    return {
+      onClick: () => {
+        rowClickHandler(record, index);
+      }
+    }
+  };
   return (
     <Table
       columns={columns}

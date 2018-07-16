@@ -33,9 +33,10 @@ class CryptoPairingsContainer extends React.Component<Props, {}> {
     this.props.fetchPairingsCollection();
   }
 
-  public onRowClickHandler = (ticker: models.Ticker, index: number) => {
-    const {history: {history}} = this.props;
-    history.push(`/ticker/${ticker.symbol}/${index}`);
+  public onRowClickHandler = (tickerSelected: models.Ticker, index: number) => {
+    const {history: {history}, tickerCollection} = this.props;
+    const tickerIndex = tickerCollection.findIndex(ticker => ticker.symbol === tickerSelected.symbol);
+    history.push(`/ticker/${tickerSelected.symbol}/${tickerIndex}`);
   };
 
   public render() {
