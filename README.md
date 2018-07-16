@@ -24,14 +24,14 @@ Self describes codebase and provides a complete picture of all the data, their t
 Enables to deploy code with confidence and mitigating further any risks with it.
 
 #### Issues
-- Not all Icons available for all pairings.
-- No mention on how to format the numbers on UI,nused bitfinex's home page as an example and formatted accordingly.
+- Not all Icons available for all pairings from 'react-cryptocoins' module.
+- No mention on how to format the numbers on UI, used bitfinex's home page as an example and formatted accordingly.
 
 #### Assumptions
 
 - Only dealt with happy path for fetch requests, not covered any error messages on UI/UX due to any api failures.
-- No spcial formatting for Ticker Detais except did for List page.
+- Locale formatting for Ticker Details and List page.
 - No search needed for a long list (though would have liked to if more time available).
 - Icon is blank for those cryptos that are not available from 'react-cryptocoins' module.
-- Icon is only shown for the 1st part of the pair eg. BTC/USD, icon is only shown for BTC.
+- Icon is only shown for the 1st part of the pair, for eg. BTC/USD, icon is only shown for BTC.
 - Used Antd Table for Ticker list, which is probably appropriate if in case we want to add filtering or sorting on the tabular data.
